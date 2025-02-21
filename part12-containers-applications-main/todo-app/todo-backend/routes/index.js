@@ -19,6 +19,11 @@ router.get('/', async (req, res) => {
 
 router.get('/statistics', async (req, res) => {
   const counter = await getAsync("counter")
+  if (!counter) {
+    const newCounter = { added_todos: 0 };
+    await setAsync("counter", JSON.stringify(newCounter))
+    return res.json(newCounter)
+  }
   res.json(JSON.parse(counter))
 })
 module.exports = router;
