@@ -1,0 +1,23 @@
+services:
+  # frontend service
+  app:
+    image: patientor-frontend
+    build:
+      context: ./frontend # The context will pick this directory as the "build context"
+      dockerfile: ./Dockerfile # This will simply tell which dockerfile to read
+    container_name: patientor-frontend
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name:  reverse-proxy
+    depends_on:
+      - app
+  # backend service
+  server:
+    image: patientor-backend
+    build:
+      context: ./backend # The context will pick this directory as the "build context"
+      dockerfile: ./Dockerfile # This will simply tell which dockerfile to read

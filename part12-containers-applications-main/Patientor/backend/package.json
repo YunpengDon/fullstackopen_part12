@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc",
+    "clean": "rm -rf ./dist",
+    "tsc": "npm run clean && tsc",
     "dev": "ts-node-dev ./src/index.ts",
     "lint": "eslint .",
-    "start": "node build/index.js"
+    "start": "node ./build/src/index.js"
   },
   "author": "Yunpeng Dong",
   "license": "MIT",
