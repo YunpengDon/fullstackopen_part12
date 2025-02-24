@@ -1,7 +1,7 @@
 services:
   # frontend service
   app:
-    image: patientor-frontend
+    image: patientor-frontend-dev
     build:
       context: ./frontend # The context will pick this directory as the "build context"
       dockerfile: ./dev.Dockerfile # This will simply tell which dockerfile to read
@@ -23,7 +23,7 @@ services:
       - app
   # backend service
   server:
-    image: patientor-backend
+    image: patientor-backend-dev
     build:
       context: ./backend # The context will pick this directory as the "build context"
       dockerfile: ./dev.Dockerfile # This will simply tell which dockerfile to read
