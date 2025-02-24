@@ -14,7 +14,7 @@ RUN npm test
 
 FROM node:20 AS build-stage
 WORKDIR /usr/src/app
-ENV VITE_BACKEND_URL='http://localhost:3000'
+ENV VITE_BACKEND_URL='/api'
 COPY --from=test /usr/src/app .
 RUN npm run build
 
